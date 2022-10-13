@@ -50,10 +50,12 @@ class UpdateScreen extends StatelessWidget {
                   cubit.enableUpdate(value);
                 },
               ),
-              NoteField(
-                controller: contentController,
-                label: 'Type something....',
-                maxLines: 10,
+              Expanded(
+                child: NoteField(
+                  controller: contentController,
+                  label: 'Type something....',
+                  maxLines: 10,
+                ),
               ),
             ],
           ),
