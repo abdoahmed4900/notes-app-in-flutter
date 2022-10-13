@@ -28,7 +28,7 @@ class NotesScreen extends StatelessWidget {
         if (cubit.notes.isEmpty) {
           return Center(
             child: Text(
-              'Add Notes Appear Here',
+              'Added Notes Appear Here',
               style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
