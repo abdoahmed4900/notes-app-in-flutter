@@ -2,6 +2,8 @@ class DatabaseState {}
 
 class DatabaseInitial extends DatabaseState {}
 
+class DatabaseEmpty extends DatabaseState {}
+
 class DatabaseCreated extends DatabaseState {}
 
 class DatabaseOpened extends DatabaseState {}

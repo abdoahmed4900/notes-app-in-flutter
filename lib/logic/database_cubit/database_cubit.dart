@@ -46,6 +46,10 @@ class DatabaseCubit extends Cubit<DatabaseState> {
     });
     emit(DatabaseCreated());
 
+    if (notes.isEmpty) {
+      emit(DatabaseEmpty());
+    }
+
     return database;
   }
 

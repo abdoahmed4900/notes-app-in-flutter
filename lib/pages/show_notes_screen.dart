@@ -24,14 +24,19 @@ class NotesScreen extends StatelessWidget {
       body:
           BlocBuilder<DatabaseCubit, DatabaseState>(builder: (context, state) {
         final cubit = DatabaseCubit.get(context);
+
         if (cubit.notes.isEmpty) {
           return Center(
             child: Text(
-              'Added Notes Appear Here',
-              style: TextStyle(fontSize: 18, color: Colors.grey),
+              'Add Notes Appear Here',
+              style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.grey),
             ),
           );
         }
+
         return Padding(
           padding: const EdgeInsets.all(8.0),
           child: AlignedGridView.count(
