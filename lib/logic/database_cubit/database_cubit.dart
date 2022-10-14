@@ -43,12 +43,11 @@ class DatabaseCubit extends Cubit<DatabaseState> {
           .then((value) => print('table created'));
     }, onOpen: (db) async {
       notes = await getNotes(db);
+      emit(DatabaseCreated());
+      if (notes.isEmpty) {
+        emit(DatabaseEmpty());
+      }
     });
-    emit(DatabaseCreated());
-
-    if (notes.isEmpty) {
-      emit(DatabaseEmpty());
-    }
 
     return database;
   }
@@ -107,6 +106,9 @@ class DatabaseCubit extends Cubit<DatabaseState> {
       notes = await getNotes(database);
 
       emit(NoteDeleted());
+      if (notes.isEmpty) {
+        emit(DatabaseEmpty());
+      }
     } catch (e) {
       print('deletion error : ${e.toString()}');
     }

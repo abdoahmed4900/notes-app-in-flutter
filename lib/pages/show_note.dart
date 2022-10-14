@@ -55,21 +55,25 @@ class ShowNoteScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  state is NoteDeleted ? title : cubit.notes[index]['title'],
+                  state is NoteDeleted || state is DatabaseEmpty
+                      ? title
+                      : cubit.notes[index]['title'],
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
                   height: 20,
                 ),
                 Text(
-                  state is NoteDeleted ? day : cubit.notes[index]['day'],
+                  state is NoteDeleted || state is DatabaseEmpty
+                      ? day
+                      : cubit.notes[index]['day'],
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
                   height: 20,
                 ),
                 Text(
-                  state is NoteDeleted
+                  state is NoteDeleted || state is DatabaseEmpty
                       ? content
                       : cubit.notes[index]['content'],
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),

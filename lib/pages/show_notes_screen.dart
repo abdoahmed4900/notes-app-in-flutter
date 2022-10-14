@@ -25,7 +25,7 @@ class NotesScreen extends StatelessWidget {
           BlocBuilder<DatabaseCubit, DatabaseState>(builder: (context, state) {
         final cubit = DatabaseCubit.get(context);
 
-        if (cubit.notes.isEmpty) {
+        if (state is DatabaseEmpty) {
           return Center(
             child: Text(
               'Added Notes Appear Here',
