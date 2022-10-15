@@ -33,9 +33,7 @@ class UpdateScreen extends StatelessWidget {
                     onPressed: () {
                       cubit.update(
                           id: id,
-                          title: titleController.text.isNotEmpty
-                              ? titleController.text
-                              : cubit.notes[index]['title'],
+                          title: titleController.text,
                           content: contentController.text);
                       Navigator.pop(context);
                     },
