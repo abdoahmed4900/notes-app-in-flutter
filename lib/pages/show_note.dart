@@ -37,6 +37,7 @@ class ShowNoteScreen extends StatelessWidget {
                         MaterialPageRoute(
                           builder: (context) => UpdateScreen(
                             id: cubit.notes[index]['id'],
+                            index: index,
                           ),
                         ));
                   },

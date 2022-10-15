@@ -8,9 +8,9 @@ import '../logic/database_cubit/database_states.dart';
 import '../widgets/widgets.dart';
 
 class UpdateScreen extends StatelessWidget {
-  final int id;
+  final int id, index;
 
-  UpdateScreen({super.key, required this.id});
+  UpdateScreen({super.key, required this.id, required this.index});
 
   TextEditingController titleController = TextEditingController();
   TextEditingController contentController = TextEditingController();
@@ -28,15 +28,17 @@ class UpdateScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(4.0),
                 child: IconButton(
-                    onPressed: state is CanUpdate
-                        ? () {
-                            cubit.update(
-                                id: id,
-                                title: titleController.text,
-                                content: contentController.text);
-                            Navigator.pop(context);
-                          }
-                        : null,
+                    onPressed: () {
+                      cubit.update(
+                          id: id,
+                          title: titleController.text.isNotEmpty
+                              ? titleController.text
+                              : cubit.notes[index]['title'],
+                          content: contentController.text.isNotEmpty
+                              ? contentController.text
+                              : cubit.notes[index]['content']);
+                      Navigator.pop(context);
+                    },
                     icon: Icon(Icons.edit)),
               ),
             ],
@@ -44,15 +46,13 @@ class UpdateScreen extends StatelessWidget {
           body: Column(
             children: [
               NoteField(
-                controller: titleController,
+                controller: titleController..text = cubit.notes[index]['title'],
                 label: 'title',
-                onChanged: (value) {
-                  cubit.enableUpdate(value);
-                },
               ),
               Expanded(
                 child: NoteField(
-                  controller: contentController,
+                  controller: contentController
+                    ..text = cubit.notes[index]['content'],
                   label: 'Type something....',
                   maxLines: 10,
                 ),
