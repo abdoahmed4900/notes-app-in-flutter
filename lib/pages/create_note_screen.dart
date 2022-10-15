@@ -31,16 +31,13 @@ class CreateNoteScreen extends StatelessWidget {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: ElevatedButton(
-                      onPressed: state is CanInsert
-                          ? () {
-                              cubit.insert(
-                                  content: contentController.text,
-                                  day: DateFormat.yMMMMd()
-                                      .format(DateTime.now()),
-                                  title: titleController.text);
-                              Navigator.pop(context);
-                            }
-                          : null,
+                      onPressed: () {
+                        cubit.insert(
+                            content: contentController.text,
+                            day: DateFormat.yMMMMd().format(DateTime.now()),
+                            title: titleController.text);
+                        Navigator.pop(context);
+                      },
                       child: Text('Add')),
                 )
               ]),

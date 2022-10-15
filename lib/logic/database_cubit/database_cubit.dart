@@ -64,6 +64,9 @@ class DatabaseCubit extends Cubit<DatabaseState> {
         emit(DatabaseInserted());
       });
     });
+    if (notes.isEmpty) {
+      emit(DatabaseEmpty());
+    }
   }
 
   void enableUpdate(String? text) {
@@ -84,6 +87,9 @@ class DatabaseCubit extends Cubit<DatabaseState> {
     }
     isAddingButtonEnabled = true;
     emit(CanInsert());
+    if (notes.isEmpty) {
+      emit(DatabaseEmpty());
+    }
   }
 
   void update(
