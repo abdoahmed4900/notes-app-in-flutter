@@ -12,13 +12,16 @@ class NoteField extends StatelessWidget {
 
   ValueChanged<String>? onSubmitted;
 
+  String? errorText;
+
   NoteField(
       {Key? key,
       required this.controller,
       required this.label,
       this.maxLines,
       this.onChanged,
-      this.onSubmitted})
+      this.onSubmitted,
+      this.errorText})
       : super(key: key);
 
   @override
@@ -31,6 +34,7 @@ class NoteField extends StatelessWidget {
         maxLines: maxLines ?? 1,
         controller: controller,
         decoration: InputDecoration(
+            errorText: errorText,
             border: OutlineInputBorder(),
             labelText: label,
             alignLabelWithHint: true),

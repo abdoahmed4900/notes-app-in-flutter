@@ -15,6 +15,8 @@ class UpdateScreen extends StatelessWidget {
   TextEditingController titleController = TextEditingController();
   TextEditingController contentController = TextEditingController();
 
+  String? titleError;
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DatabaseCubit, DatabaseState>(
@@ -34,9 +36,7 @@ class UpdateScreen extends StatelessWidget {
                           title: titleController.text.isNotEmpty
                               ? titleController.text
                               : cubit.notes[index]['title'],
-                          content: contentController.text.isNotEmpty
-                              ? contentController.text
-                              : cubit.notes[index]['content']);
+                          content: contentController.text);
                       Navigator.pop(context);
                     },
                     icon: Icon(Icons.edit)),

@@ -55,7 +55,7 @@ class ShowNoteScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                SelectableText(
                   state is NoteDeleted || state is DatabaseEmpty
                       ? title
                       : cubit.notes[index]['title'],
@@ -64,7 +64,7 @@ class ShowNoteScreen extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
-                Text(
+                SelectableText(
                   state is NoteDeleted || state is DatabaseEmpty
                       ? day
                       : cubit.notes[index]['day'],
@@ -73,7 +73,7 @@ class ShowNoteScreen extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
-                Text(
+                SelectableText(
                   state is NoteDeleted || state is DatabaseEmpty
                       ? content
                       : cubit.notes[index]['content'],
